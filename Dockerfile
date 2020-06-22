@@ -12,8 +12,12 @@ RUN ln -s /root/.local/bin/pip /usr/local/bin/pip
 RUN pip install aws-sam-cli
 
 COPY --from=node:12 /usr/local/bin/ /usr/local/bin/
+COPY --from=node:12 /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
+COPY --from=node:12 /opt/ /opt/
 
 RUN aws --version
 RUN sam --version
 RUN node --version
+RUN npm --version
+RUN yarn --version
 
